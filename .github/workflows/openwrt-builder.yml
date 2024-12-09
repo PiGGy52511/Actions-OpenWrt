@@ -30,7 +30,7 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-20.04
 
     steps:
     - name: Checkout
@@ -92,6 +92,8 @@ jobs:
       run: |
         cd openwrt
         echo -e "$(nproc) thread compile"
+        sed -i 's/IO_ftrylockfile/IO_EOF_SEEN/' build_dir/host/m4-1.4.17/lib/*.c
+        echo "#define _IO_IN_BACKUP 0x100" >> lib/stdio-impl.h
         make -j$(nproc) || make -j1 || make -j1 V=s
         echo "status=success" >> $GITHUB_OUTPUT
         grep '^CONFIG_TARGET.*DEVICE.*=y' .config | sed -r 's/.*DEVICE_(.*)=y/\1/' > DEVICE_NAME
