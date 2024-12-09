@@ -91,7 +91,7 @@ jobs:
       run: |
           cd openwrt/tools/m4/patches
           wget https://raw.githubusercontent.com/keyfour/openwrt/2722d51c5cf6a296b8ecf7ae09e46690403a6c3d/tools/m4/patches/011-fix-sigstksz.patch
-          wget https://raw.githubusercontent.com/rdslw/openwrt/e5d47f32131849a69a9267de51a30d6be1f0d0ac/tools/bison/patches/110-glibc-change-work-around.patch
+          wget https://github.com/easybuilders/easybuild-easyconfigs/files/3307665/M4-1.4.17_glibc_2.28.patch.zip && unzip M4-1.4.17_glibc_2.28.patch.zip
     
     #- name: SSH connection to Actions
     #  uses: P3TERX/ssh2actions@v1.0.0
